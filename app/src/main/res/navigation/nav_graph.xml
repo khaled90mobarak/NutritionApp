@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/addIngredientFragment">
+
+    <fragment
+        android:id="@+id/addIngredientFragment"
+        android:name="com.task.nutrition.ui.AddIngredientFragment"
+        android:label="AddIngredientFragment" >
+        <action
+            android:id="@+id/action_addIngredientFragment_to_nutritionDetailsFragment"
+            app:destination="@id/nutritionDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nutritionDetailsFragment"
+        android:name="com.task.nutrition.ui.NutritionDetailsFragment"
+        android:label="Nutrition Details" >
+        <action
+            android:id="@+id/action_nutritionDetailsFragment_to_addIngredientFragment2"
+            app:destination="@+id/addIngredientFragment"
+            app:popUpTo="@id/addIngredientFragment"
+            app:popUpToInclusive="true"/>
+
+    </fragment>
+</navigation>
