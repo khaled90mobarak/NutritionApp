@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Nutrition Task</string>
+    <string name="error_message">Please enter a valid input!</string>
+    <string name="hint">Enter ingredients, e.g. 2 ounce almond</string>
+    <string name="button_name">Analyze</string>
+    <string name="nutrition_facts_textview">Nutrition Facts "on daily basis"</string>
+    <string name="calories_textview">Calories</string>
+    <string name="fat_textview">Fat</string>
+    <string name="cholesterol_textview">Cholesterol</string>
+    <string name="Sodium_textview">Sodium</string>
+    <string name="carbohydrate_textview">Carbohydrate</string>
+    <string name="protein_textview">Protein</string>
+    <string name="vitamin_textview">Vitamin</string>
+    <string name="calcium_textview">Calcium</string>
+    <string name="iron_textview">Iron</string>
+    <string name="potassium_textview">Potassium</string>
 </resources>

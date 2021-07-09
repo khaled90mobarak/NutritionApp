@@ -2,6 +2,7 @@ package com.task.nutrition.models
 
 import java.io.Serializable
 
+
 data class NutritionResponse(
     val calories: Int,
     val cautions: List<Any>,

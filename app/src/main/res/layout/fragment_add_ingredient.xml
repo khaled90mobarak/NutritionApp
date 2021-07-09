@@ -3,10 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.task.nutrition.viewmodel.MainViewModel" />
 
+        <variable
+            name="checkButton"
+            type="com.task.nutrition.ui.AddIngredientFragment" />
+
+        <import type="android.view.View" />
+
+        <import type="android.text.TextUtils" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,26 +25,34 @@
             android:id="@+id/et_ingredient"
             android:layout_width="match_parent"
             android:layout_height="260dp"
-            android:inputType="textMultiLine"
+            android:layout_marginTop="@dimen/margin_top_add_ingredients"
             android:gravity="top"
+            android:hint="@string/hint"
+            android:inputType="textMultiLine"
             android:maxLines="100"
-            android:text="@{viewModel.editTextContentLiveData}"
-            app:textwatcher="@{viewModel.ingredientTextWatcher}"
+            android:text="@{viewModel.liveData}"
             app:layout_constraintBottom_toTopOf="@+id/btn_analyze"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.25"
+            app:textwatcher="@{viewModel.ingredientTextWatcher}" />
 
+        <!--        android:visibility="@{TextUtils.isEmpty(viewModel.liveData)?View.INVISIBLE : View.VISIBLE}"-->
         <Button
             android:id="@+id/btn_analyze"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
             android:onClick="@{()-> viewModel.onAnalyzeClicked()}"
-            android:text="Analyze"
+            android:text="@string/button_name"
+            android:textAllCaps="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.547" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

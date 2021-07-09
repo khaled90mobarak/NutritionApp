@@ -1,7 +1,6 @@
 package com.task.nutrition.api.body
 
 import java.io.Serializable
-import javax.inject.Inject
 
 data class NutritionRequest(
     val cuisine: String,

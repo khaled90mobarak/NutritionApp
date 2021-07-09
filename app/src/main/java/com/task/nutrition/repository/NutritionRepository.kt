@@ -8,9 +8,7 @@ import javax.inject.Inject
 
 class NutritionRepository @Inject constructor() {
 
-    suspend fun getNutritionData(ingredient: String) =
-        RetrofitInstance.api.getNutritionData(APP_ID,APP_KEY,ingredient)
 
     suspend fun getNutritionDetails(nutritionRequest: NutritionRequest) =
-        RetrofitInstance.api.getNutritionDetails(APP_ID,APP_KEY,nutritionRequest)
+        RetrofitInstance.api.getNutritionDetails(APP_ID, APP_KEY, nutritionRequest)
 }

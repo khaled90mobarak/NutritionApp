@@ -2,39 +2,53 @@ package com.task.nutrition.viewmodel
 
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.task.nutrition.api.body.NutritionRequest
 import com.task.nutrition.models.NutritionResponse
 import com.task.nutrition.repository.NutritionRepository
+import com.task.nutrition.utils.Constants.Companion.URL_FROM_PARSER
+import com.task.nutrition.utils.Event
 import com.task.nutrition.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import okhttp3.internal.indexOf
 import retrofit2.Response
-import java.util.*
 import javax.inject.Inject
-import kotlin.collections.ArrayList
 
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    val nutritionRepository: NutritionRepository
+    private val nutritionRepository: NutritionRepository,
+    private val savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
 
+
     var parts: List<String>? = null
-    var nutritionResponse: NutritionResponse? = null
-    val nutritionLiveData: MutableLiveData<Resource<NutritionResponse>> = MutableLiveData()
-    var editTextContentLiveData = MutableLiveData<String>()
+    private var nutritionResponse: NutritionResponse? = null
+    var nutritionLiveData: MutableLiveData<Event<Resource<NutritionResponse>?>> = MutableLiveData()
+
+    val liveData = savedStateHandle.getLiveData("liveData", "")
+    fun saveState() {
+        if (parts != null) {
+            var string = ""
+            for (line in parts!!) {
+                string += line + '\n'
+            }
+            liveData.value = parts.toString()
+            savedStateHandle.set("liveData", string)
+        }
+    }
 
     fun onAnalyzeClicked() = viewModelScope.launch {
-        nutritionLiveData.postValue(Resource.Loading())
-           var  nutritionBody = NutritionRequest("","","http://www.edamam.com/ontologies/edamam.owl#Measure_serving", parts!!,"","",
-           "","","","http://www.edamam.com/ontologies/edamam.owl#Measure_serving","")
-      val response = nutritionRepository.getNutritionDetails(nutritionBody)
-            nutritionLiveData.postValue(handleNutritionData(response))
+        val nutritionBody = NutritionRequest(
+            "", "", URL_FROM_PARSER, parts!!, "", "",
+            "", "", "", URL_FROM_PARSER, ""
+        )
+        val response = nutritionRepository.getNutritionDetails(nutritionBody)
+//        nutritionLiveData.postValue(Event(handleNutritionData(response)))
+        nutritionLiveData.value = Event(handleNutritionData(response))
     }
 
     private fun handleNutritionData(response: Response<NutritionResponse>): Resource<NutritionResponse> {
@@ -47,7 +61,7 @@ class MainViewModel @Inject constructor(
         return Resource.Error(response.message())
     }
 
-    var ingredientTextWatcher: TextWatcher = object : TextWatcher{
+    var ingredientTextWatcher: TextWatcher = object : TextWatcher {
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
         }
@@ -58,9 +72,9 @@ class MainViewModel @Inject constructor(
         }
 
         override fun afterTextChanged(s: Editable?) {
-            Log.d("TextWatcher", s.toString())
         }
 
     }
+
 
 }

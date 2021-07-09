@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="viewModelNutrition"
             type="com.task.nutrition.viewmodel.MainViewModel" />
@@ -17,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Nutrition Facts"
+            android:text="@string/nutrition_facts_textview"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -30,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingStart="10dp"
+            android:paddingStart="@dimen/padding_start"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.05"
@@ -41,63 +42,62 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Calories" />
+                android:text="@string/calories_textview" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="Fat" />
+                android:layout_marginTop="@dimen/margin_top"
+                android:text="@string/fat_textview" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="Cholesterol" />
+                android:layout_marginTop="@dimen/margin_top"
+                android:text="@string/cholesterol_textview" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="Sodium" />
+                android:layout_marginTop="@dimen/margin_top"
+                android:text="@string/Sodium_textview" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="Carbohydrate" />
-
+                android:layout_marginTop="@dimen/margin_top"
+                android:text="@string/carbohydrate_textview" />
 
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="Protein" />
+                android:layout_marginTop="@dimen/margin_top"
+                android:text="@string/protein_textview" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="Vitamin" />
+                android:layout_marginTop="@dimen/margin_top"
+                android:text="@string/vitamin_textview" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="Calcium" />
+                android:layout_marginTop="@dimen/margin_top"
+                android:text="@string/calcium_textview" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="Iron" />
+                android:layout_marginTop="@dimen/margin_top"
+                android:text="@string/iron_textview" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="Potassium" />
+                android:layout_marginTop="@dimen/margin_top"
+                android:text="@string/potassium_textview" />
 
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -117,72 +117,72 @@
                 android:id="@+id/calories"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{Integer.toString(viewModelNutrition.nutritionLiveData.data.calories)}"/>
+                android:text="@{Integer.toString(viewModelNutrition.nutritionLiveData.peekContent().data.calories)}" />
 
 
             <TextView
                 android:id="@+id/fats"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="@{Double.toString(viewModelNutrition.nutritionLiveData.data.totalDaily.FAT.quantity)+viewModelNutrition.nutritionLiveData.data.totalDaily.FAT.unit}" />
+                android:layout_marginTop="@dimen/margin_top"
+                android:text="@{Double.toString(viewModelNutrition.nutritionLiveData.peekContent().data.totalDaily.FAT.quantity)+viewModelNutrition.nutritionLiveData.peekContent().data.totalDaily.FAT.unit}" />
 
             <TextView
                 android:id="@+id/cholesterol"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="@{Double.toString(viewModelNutrition.nutritionLiveData.data.totalDaily.CHOLE.quantity)+viewModelNutrition.nutritionLiveData.data.totalDaily.CHOLE.unit}" />
+                android:layout_marginTop="@dimen/margin_top"
+                android:text="@{Double.toString(viewModelNutrition.nutritionLiveData.peekContent().data.totalDaily.CHOLE.quantity)+viewModelNutrition.nutritionLiveData.peekContent().data.totalDaily.CHOLE.unit}" />
 
             <TextView
                 android:id="@+id/sodium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="@{Double.toString(viewModelNutrition.nutritionLiveData.data.totalDaily.NA.quantity)+viewModelNutrition.nutritionLiveData.data.totalDaily.NA.unit}" />
+                android:layout_marginTop="@dimen/margin_top"
+                android:text="@{Double.toString(viewModelNutrition.nutritionLiveData.peekContent().data.totalDaily.NA.quantity)+viewModelNutrition.nutritionLiveData.peekContent().data.totalDaily.NA.unit}" />
 
             <TextView
                 android:id="@+id/carbohydrate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="@{Double.toString(viewModelNutrition.nutritionLiveData.data.totalDaily.CHOCDF.quantity)+viewModelNutrition.nutritionLiveData.data.totalDaily.CHOCDF.unit}" />
+                android:layout_marginTop="@dimen/margin_top"
+                android:text="@{Double.toString(viewModelNutrition.nutritionLiveData.peekContent().data.totalDaily.CHOCDF.quantity)+viewModelNutrition.nutritionLiveData.peekContent().data.totalDaily.CHOCDF.unit}" />
 
 
             <TextView
                 android:id="@+id/protein"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="@{Double.toString(viewModelNutrition.nutritionLiveData.data.totalDaily.PROCNT.quantity)+viewModelNutrition.nutritionLiveData.data.totalDaily.PROCNT.unit}" />
+                android:layout_marginTop="@dimen/margin_top"
+                android:text="@{Double.toString(viewModelNutrition.nutritionLiveData.peekContent().data.totalDaily.PROCNT.quantity)+viewModelNutrition.nutritionLiveData.peekContent().data.totalDaily.PROCNT.unit}" />
 
             <TextView
                 android:id="@+id/vitamin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="@{Double.toString(viewModelNutrition.nutritionLiveData.data.totalDaily.VITC.quantity)+viewModelNutrition.nutritionLiveData.data.totalDaily.VITC.unit}" />
+                android:layout_marginTop="@dimen/margin_top"
+                android:text="@{Double.toString(viewModelNutrition.nutritionLiveData.peekContent().data.totalDaily.VITC.quantity)+viewModelNutrition.nutritionLiveData.peekContent().data.totalDaily.VITC.unit}" />
 
             <TextView
                 android:id="@+id/calcium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="@{Double.toString(viewModelNutrition.nutritionLiveData.data.totalDaily.CA.quantity)+viewModelNutrition.nutritionLiveData.data.totalDaily.CA.unit}" />
+                android:layout_marginTop="@dimen/margin_top"
+                android:text="@{Double.toString(viewModelNutrition.nutritionLiveData.peekContent().data.totalDaily.CA.quantity)+viewModelNutrition.nutritionLiveData.peekContent().data.totalDaily.CA.unit}" />
 
             <TextView
                 android:id="@+id/iron"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="@{Double.toString(viewModelNutrition.nutritionLiveData.data.totalDaily.FE.quantity)+viewModelNutrition.nutritionLiveData.data.totalDaily.FE.unit}" />
+                android:layout_marginTop="@dimen/margin_top"
+                android:text="@{Double.toString(viewModelNutrition.nutritionLiveData.peekContent().data.totalDaily.FE.quantity)+viewModelNutrition.nutritionLiveData.peekContent().data.totalDaily.FE.unit}" />
 
             <TextView
                 android:id="@+id/potassium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="@{Double.toString(viewModelNutrition.nutritionLiveData.data.totalDaily.k.quantity)+viewModelNutrition.nutritionLiveData.data.totalDaily.k.unit}" />
+                android:layout_marginTop="@dimen/margin_top"
+                android:text="@{Double.toString(viewModelNutrition.nutritionLiveData.peekContent().data.totalDaily.k.quantity)+viewModelNutrition.nutritionLiveData.peekContent().data.totalDaily.k.unit}" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
